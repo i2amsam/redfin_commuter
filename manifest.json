@@ -1,0 +1,14 @@
+{
+  "name": "Redfin Commuter Times",
+  "version": "0.0.1",
+  "description": "Uses Google Transit APIs to add transit time to Redfin Results",
+  "content_scripts": [
+    { 
+      "matches": ["https://www.redfin.com/*/*"],
+      "js": ["lodash-3.2.0.min.js", "jquery-2.1.3.min.js", "redfin_commuter_content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src https://maps.googleapis.com;"
+}
