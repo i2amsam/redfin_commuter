@@ -25,9 +25,15 @@ function makeDirectionsRequest(fromAddress, toAddress) {
     toAddress = "141 Portland Street, Cambridge MA"
   }
 
-  var maps_key = "AIzaSyCyU9DemQEsnkx7AJhL_Bueo9A6RjARs6w";
+  var maps_key = undefined;
   var url = 'https://maps.googleapis.com/maps/api/directions/json?origin='+encodeURIComponent(fromAddress)+'&destination=' +encodeURIComponent(toAddress)+ '&mode=transit&key='+maps_key;
   
+  if (maps_key) {
+    url += "&key=" + maps_key
+  } else {
+    alert("Add your google api key for 'directions api'");
+  }
+
   var cacheResult = getFromCache(url);
   if (cacheResult) {
     return $.Deferred().resolveWith(this, [cacheResult]);
@@ -35,7 +41,13 @@ function makeDirectionsRequest(fromAddress, toAddress) {
   
   return $.ajax({
     url: url,
-    complete: function(data) { addToCache(url, data); }
+    complete: function(data) 
+    { 
+      if (data && data.responseJSON) {
+        data = data.responseJSON;
+      }
+      addToCache(url, data);
+    }
   });
 }
 
