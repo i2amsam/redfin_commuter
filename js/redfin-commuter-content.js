@@ -29,8 +29,8 @@ function makeDirectionsRequest(fromAddress, toAddress) {
   var maps_key = undefined;
   var url = 'https://maps.googleapis.com/maps/api/directions/json?origin='+encodeURIComponent(fromAddress)+'&destination=' +encodeURIComponent(toAddress)+ '&mode=transit&key='+maps_key;
   
-  // Next Wednesday at 9AM
-  var date = moment().day(10).hour(9).unix();
+  // Next Wednesday at 6:30AM
+  var date = moment().day(10).hour(6).minute(30).second(0).unix();
   url += "&arrival_time=" + date;
 
   if (maps_key) {
@@ -89,7 +89,7 @@ function addTimingToRow(row, routeData) {
   if (element) {
     element.innerText = duration;
   } else {
-    console.error("Could not set the duration for element", element, duration, row)
+    //console.error("Could not set the duration for element", element, duration, row)
   }
 
 }
