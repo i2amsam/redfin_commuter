@@ -5,6 +5,7 @@
 // Still TODO
 // # Handle input of to / from
 // # Handle forcing to rush hour commutes
+// # Handle arrive by
 // # Handle list and non-list cases
 // # Error conditions
 
@@ -28,6 +29,10 @@ function makeDirectionsRequest(fromAddress, toAddress) {
   var maps_key = undefined;
   var url = 'https://maps.googleapis.com/maps/api/directions/json?origin='+encodeURIComponent(fromAddress)+'&destination=' +encodeURIComponent(toAddress)+ '&mode=transit&key='+maps_key;
   
+  // Next Wednesday at 9AM
+  var date = moment().day(10).hour(9).unix();
+  url += "&arrival_time=" + date;
+
   if (maps_key) {
     url += "&key=" + maps_key
   } else {

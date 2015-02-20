@@ -5,7 +5,7 @@
   "content_scripts": [
     { 
       "matches": ["https://www.redfin.com/*/*"],
-      "js": ["js/vendor/lodash-3.2.0.min.js", "js/vendor/jquery-2.1.3.min.js", "js/redfin-commuter-content.js"],
+      "js": ["js/vendor/lodash-3.2.0.min.js", "js/vendor/jquery-2.1.3.min.js","js/vendor/moment-2.9.0.min.js", "js/redfin-commuter-content.js"],
       "run_at": "document_idle"
     }
   ],
